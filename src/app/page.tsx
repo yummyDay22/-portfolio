@@ -31,7 +31,6 @@ export default function Home() {
         {/* Projects — 2-col cards */}
         <span id="work" style={{ position: "absolute", marginTop: -100 }} aria-hidden />
         {projects.map((p) => <ProjectCard key={p.slug} p={p} />)}
-        </div>
 
         {/* Services — danielsun "Everything your product needs" */}
         <section className="tile xl span-2" style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
