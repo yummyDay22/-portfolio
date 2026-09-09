@@ -54,7 +54,7 @@ export default function About() {
         </section>
 
         <section className="tile" style={{ display: "flex", flexDirection: "column" }}>
-          <p className="tile-p" style={{ color: "var(--faint)" }}>최근 글</p>
+          <p className="tile-p" style={{ color: "var(--faint)" }}>나는 지금</p>
           {latest ? (
             <>
               {latest.image && (
