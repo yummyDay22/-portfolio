@@ -46,7 +46,7 @@ export default function ChatModal({ onClose }: { onClose: () => void }) {
           <a className="btn btn-primary wide" href={`mailto:${site.email}`}>
             <MailIcon width={16} height={16} /> 이메일 보내기 <ArrowUpRight className="arrow" />
           </a>
-          <a className="btn btn-outline on-white" href={x} target="_blank" rel="noreferrer">
+          <a className="btn btn-outline on-white" href={ig} target="_blank" rel="noreferrer">
             <InstagramLogo width={15} height={15} /> Instagram
           </a>
           <a className="btn btn-outline on-white" href={li} target="_blank" rel="noreferrer">
