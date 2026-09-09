@@ -31,11 +31,6 @@ export default function Home() {
         {/* Projects — 2-col cards */}
         <span id="work" style={{ position: "absolute", marginTop: -100 }} aria-hidden />
         {projects.map((p) => <ProjectCard key={p.slug} p={p} />)}
-        <div className="tile xl span-2 rows-2" style={{ display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center", border: "2px dashed var(--line-2)", background: "transparent" }}>
-          <div>
-            <p className="tile-title" style={{ color: "var(--faint)" }}>다음 프로젝트</p>
-            <p className="tile-sub" style={{ color: "var(--faint)" }}>준비 중</p>
-          </div>
         </div>
 
         {/* Services — danielsun "Everything your product needs" */}
