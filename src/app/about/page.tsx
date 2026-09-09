@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { site, story } from "@/content/site";
-import { categories, countPosts } from "@/lib/hobby";
+import { categories, countPosts, latestPost } from "@/lib/hobby";
 import Footer from "@/components/Footer";
 import { ArrowUpRight } from "@/components/Icons";
 
@@ -10,6 +10,7 @@ export const metadata: Metadata = { title: `Story — ${site.fullName}` };
 
 export default function About() {
   const counts = countPosts();
+  const latest = latestPost();
   return (
     <main className="page theme-dark">
       <div className="grid">
@@ -53,16 +54,21 @@ export default function About() {
         </section>
 
         <section className="tile" style={{ display: "flex", flexDirection: "column" }}>
-          <p className="tile-p" style={{ color: "var(--faint)" }}>지금</p>
-          <div className="list" style={{ marginTop: 10 }}>
-            {story.now.map((n) => (
-              <div key={n.k} className="list-row" style={{ flexDirection: "column", gap: 2 }}>
-                <div className="d" style={{ color: "var(--faint)" }}>{n.k}</div>
-                <div className="k" style={{ fontSize: 15, lineHeight: "22px" }}>{n.v}</div>
-              </div>
-            ))}
-          </div>
-          <p className="tile-p" style={{ marginTop: "auto", fontSize: 14, lineHeight: "20px" }}>{site.location}</p>
+          <p className="tile-p" style={{ color: "var(--faint)" }}>최근 글</p>
+          {latest ? (
+            <>
+              {latest.image && (
+                <div style={{ position: "relative", width: "100%", height: 130, borderRadius: 14, overflow: "hidden", marginTop: 12, background: "var(--fill)" }}>
+                  <Image src={latest.image} alt="" fill sizes="300px" style={{ objectFit: "cover" }} />
+                </div>
+              )}
+              <p className="tile-p" style={{ color: "var(--faint)", fontSize: 12, marginTop: 12 }}>{categories.find((c) => c.id === latest.category)?.name} · {latest.date}</p>
+              <p className="tile-h" style={{ marginTop: 6 }}>{latest.title}</p>
+              <Link href={`/hobby/${latest.category}/${latest.slug}`} className="btn btn-outline" style={{ alignSelf: "flex-end", marginTop: "auto" }}>보러가기 <ArrowUpRight className="arrow" /></Link>
+            </>
+          ) : (
+            <p className="tile-p" style={{ marginTop: 10 }}>아직 글이 없어요.</p>
+          )}
         </section>
 
         <section className="tile" style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>

@@ -12,7 +12,7 @@ export const categories = [
 ] as const;
 
 export type CategoryId = (typeof categories)[number]["id"];
-export type Post = { category: CategoryId; slug: string; title: string; date: string; summary: string; body: string };
+export type Post = { category: CategoryId; slug: string; title: string; date: string; summary: string; body: string; image?: string };
 
 const ROOT = path.join(process.cwd(), "src", "content", "hobby");
 
@@ -47,6 +47,7 @@ export function listPosts(category: CategoryId): Post[] {
         date: meta.date ?? "",
         summary: meta.summary ?? "",
         body,
+        image: meta.image ?? body.match(/!\[[^\]]*\]\(([^)\s]+)/)?.[1],
       };
     })
     .sort((a, b) => (a.date < b.date ? 1 : -1));
@@ -62,4 +63,11 @@ export function renderMarkdown(md: string): string {
 
 export function countPosts(): Record<CategoryId, number> {
   return Object.fromEntries(categories.map((c) => [c.id, listPosts(c.id).length])) as Record<CategoryId, number>;
+}
+
+/* Most recent post across every category (for the Story page "최근 글" tile). */
+export function latestPost(): Post | undefined {
+  return categories
+    .flatMap((c) => listPosts(c.id))
+    .sort((a, b) => (a.date < b.date ? 1 : -1))[0];
 }
