@@ -12,16 +12,18 @@ const tabs = [
 ];
 
 export default function Nav() {
-  const pathname = usePathname();
+  const pathname = usePathname() ?? "/";
   const [chatOpen, setChatOpen] = useState(false);
   const isProject = pathname.startsWith("/work/");
+  const isHobby = pathname.startsWith("/hobby/");
+  const isSub = isProject || isHobby;
 
   return (
     <>
       <nav className="nav" aria-label="Primary">
-        {isProject ? (
+        {isSub ? (
           <div className="pill">
-            <Link href="/" className="pill-item">
+            <Link href={isHobby ? "/about" : "/"} className="pill-item">
               <ArrowLeft />
               Back
             </Link>
@@ -34,7 +36,7 @@ export default function Nav() {
           <Tabs pathname={pathname} />
         )}
 
-        {!isProject && (
+        {!isSub && (
           <div className="pill">
             <button type="button" className="pill-item cta" onClick={() => setChatOpen(true)}>
               <span className="dot" aria-hidden />

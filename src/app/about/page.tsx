@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { site, story } from "@/content/site";
+import { categories, countPosts } from "@/lib/hobby";
 import Footer from "@/components/Footer";
 import { ArrowUpRight } from "@/components/Icons";
 
 export const metadata: Metadata = { title: `Story — ${site.fullName}` };
 
 export default function About() {
+  const counts = countPosts();
   return (
     <main className="page theme-dark">
-      <p className="grid-hint">눌러보세요…</p>
       <div className="grid">
         <section className="tile xl span-4 auto" style={{ minHeight: 328, display: "flex", flexDirection: "column", justifyContent: "center" }}>
           <div className="hero-row">
@@ -29,6 +31,9 @@ export default function About() {
           <h2 className="tile-title" style={{ fontSize: 28, lineHeight: "34px" }}>제가 일하는 방식.</h2>
           <p className="eyebrow" style={{ marginTop: 28 }}>어떻게 여기까지 왔나</p>
           {story.howIGotHere.map((t) => <p key={t.slice(0, 20)} className="tile-p" style={{ fontSize: 15, lineHeight: "24px" }}>{t}</p>)}
+          {story.abilities.map((a, i) => (
+            <p key={a.k} className="tile-p" style={{ fontSize: 15, lineHeight: "24px" }}><b>{i + 1}. {a.k}</b> — {a.v}</p>
+          ))}
           <p className="eyebrow">지금 서 있는 곳</p>
           {story.whereIStand.map((t) => <p key={t.slice(0, 20)} className="tile-p" style={{ fontSize: 15, lineHeight: "24px" }}>{t}</p>)}
           <p className="eyebrow">찾고 있는 것</p>
@@ -36,13 +41,13 @@ export default function About() {
         </section>
 
         <section className="tile span-2">
-          <p className="tile-p" style={{ color: "var(--faint)", marginBottom: 14 }}>경험</p>
+          <p className="tile-p" style={{ color: "var(--faint)", marginBottom: 14 }}>Hobby</p>
           <div className="list">
-            {story.experience.map((e) => (
-              <div key={e.role + e.at} className="list-row">
-                <div><div className="k">{e.role}</div><div className="d">{e.at}</div></div>
-                <div className="v" style={{ flex: "none" }}>{e.when}</div>
-              </div>
+            {categories.map((c) => (
+              <Link key={c.id} href={`/hobby/${c.id}`} className="hobby-row">
+                <div><div className="k">{c.name}</div><div className="d">{c.ko} · {c.blurb}</div></div>
+                <span className="n">{counts[c.id]}편 →</span>
+              </Link>
             ))}
           </div>
         </section>
@@ -65,7 +70,7 @@ export default function About() {
             <p className="tile-p" style={{ color: "var(--faint)" }}>이력서</p>
             <p className="tile-h" style={{ marginTop: 10 }}>긴 버전은 한 장으로.</p>
           </div>
-          <a className="btn btn-outline" href={site.cv} style={{ alignSelf: "flex-start" }}>이력서 받기 <ArrowUpRight className="arrow" /></a>
+          <a className="btn btn-outline" href={site.cv} target="_blank" rel="noreferrer" style={{ alignSelf: "flex-start" }}>이력서 보기 (PDF) <ArrowUpRight className="arrow" /></a>
         </section>
 
         <section className="tile xl span-4 auto" style={{ minHeight: 200, display: "flex", alignItems: "center" }}>
