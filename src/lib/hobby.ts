@@ -4,10 +4,10 @@ import { marked } from "marked";
 
 export const categories = [
   { id: "startup", name: "STARTUP IDEAS", ko: "창업 아이디어", blurb: "기회를 감지하고, 작게 시행하고, 맞으면 키우는 이야기" },
-  { id: "math", name: "MATH", ko: "수학", blurb: "순수수학, 조합론, 그리고 AI로 풀어보는 미해결 문제" },
+  { id: "math", name: "MATH", ko: "수학", blurb: "입시 수학, 해석학, 선형대수학, 조합론, 그리고 AI로 풀어보는 미해결 문제" },
   { id: "travel", name: "TRAVEL", ko: "여행", blurb: "낯선 곳에서 본 것, 생각한 것" },
-  { id: "robot", name: "ROBOT", ko: "로봇", blurb: "모터, 센서, 릴레이 — 물리 세계의 문제는 물리 부품으로" },
-  { id: "branding", name: "BRANDING", ko: "브랜딩", blurb: "이름, 포스터, 톤 — 제품이 진지하게 보이는 방법" },
+  { id: "robot", name: "ROBOT", ko: "로봇", blurb: "모터, 센서, 릴레이 — 소프트웨어의 한계 돌파, 생각을 실제 세계로" },
+  { id: "branding", name: "BRANDING", ko: "브랜딩", blurb: "이름, 포스터, 톤 — 거시세계 사람들 이해해보기" },
   { id: "etc", name: "ETC", ko: "기타", blurb: "분류가 애매한 나머지 전부" },
 ] as const;
 
