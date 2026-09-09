@@ -51,6 +51,9 @@ export default function CardVisual({ p }: { p: Project }) {
               <span className="m-tag" style={{ background: "var(--ink)", color: "var(--bg)", height: 22 }}>확인</span>
             </div>
           </div>
+          <div className="win" style={{ right: 0, top: 330, width: 300, height: 130, background: "#fff", display: "flex", alignItems: "center", justifyContent: "center", padding: "0 36px" }}>
+            <Image src="/media/toss-logo.png" alt="toss" width={1200} height={406} sizes="300px" style={{ width: "100%", height: "auto", display: "block" }} />
+          </div>
         </div>
       );
     case "ax":
