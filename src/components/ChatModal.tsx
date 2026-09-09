@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { site } from "@/content/site";
-import { ArrowUpRight, CloseIcon, LinkedInLogo, MailIcon, XLogo } from "./Icons";
+import { ArrowUpRight, CloseIcon, InstagramLogo, LinkedInLogo, MailIcon } from "./Icons";
 
 export default function ChatModal({ onClose }: { onClose: () => void }) {
   const closeRef = useRef<HTMLButtonElement>(null);
@@ -19,7 +19,7 @@ export default function ChatModal({ onClose }: { onClose: () => void }) {
     };
   }, [onClose]);
 
-  const x = site.socials.find((s) => s.id === "x")?.href ?? "#";
+  const ig = site.socials.find((s) => s.id === "instagram")?.href ?? "#";
   const li = site.socials.find((s) => s.id === "linkedin")?.href ?? "#";
 
   return (
@@ -47,7 +47,7 @@ export default function ChatModal({ onClose }: { onClose: () => void }) {
             <MailIcon width={16} height={16} /> 이메일 보내기 <ArrowUpRight className="arrow" />
           </a>
           <a className="btn btn-outline on-white" href={x} target="_blank" rel="noreferrer">
-            <XLogo width={14} height={14} /> X로 DM
+            <InstagramLogo width={15} height={15} /> Instagram
           </a>
           <a className="btn btn-outline on-white" href={li} target="_blank" rel="noreferrer">
             <LinkedInLogo width={14} height={14} /> LinkedIn

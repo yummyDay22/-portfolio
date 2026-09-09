@@ -67,8 +67,12 @@ export const ReadCvLogo = (p: P) => (
   <svg viewBox="0 0 24 24" {...fill} {...p}><path d="M7 3h10a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3Zm1 5v2h8V8H8Zm0 4v2h8v-2H8Zm0 4v2h5v-2H8Z" /></svg>
 );
 
+export const InstagramLogo = (p: P) => (
+  <svg viewBox="0 0 24 24" {...base} {...p}><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none" /></svg>
+);
+
 export const socialIcon: Record<string, (p: P) => React.JSX.Element> = {
-  x: XLogo, linkedin: LinkedInLogo, github: GitHubLogo, threads: ThreadsLogo, youtube: YouTubeLogo, readcv: ReadCvLogo,
+  x: XLogo, linkedin: LinkedInLogo, github: GitHubLogo, threads: ThreadsLogo, youtube: YouTubeLogo, readcv: ReadCvLogo, instagram: InstagramLogo,
 };
 export const serviceIcon: Record<string, (p: P) => React.JSX.Element> = {
   target: TargetIcon, bolt: BoltIcon, agent: AgentIcon, chart: ChartIcon,

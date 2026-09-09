@@ -5,10 +5,9 @@ export const site = {
   email: "hosung3849@naver.com",
   location: "Seoul, KR",
   socials: [
-    { id: "github", label: "GitHub", href: "https://github.com/" },
+    { id: "github", label: "GitHub", href: "https://github.com/yummyDay22" },
+    { id: "instagram", label: "Instagram", href: "https://www.instagram.com/ho_se0ng/" },
     { id: "linkedin", label: "LinkedIn", href: "https://www.linkedin.com/" },
-    { id: "x", label: "X", href: "https://x.com/" },
-    { id: "threads", label: "Threads", href: "https://www.threads.net/" },
     { id: "youtube", label: "YouTube", href: "https://www.youtube.com/" },
     { id: "readcv", label: "Read.cv", href: "https://read.cv/" },
   ],
